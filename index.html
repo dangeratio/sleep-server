@@ -5,15 +5,22 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   <style>
   .pad { margin-left: 2em; margin-right:2em; margin-bottom:1em;};
+  .padbtn { padding-right: 1em; };
   .tall { height: 64px; };
   </style>
 </head><body>
 <div class="pad">
-  <h1>Commands:</h1>
+  <h1><a href="/">Commands:</a></h1>
 </div>
 <div class="row pad">
   <form action="index.html" method="POST" id="form1">
-    <button type="button" class="tall btn btn-primary col-xs-12 col-sm-12 col-md-12 col-lg-12" onclick="form1.submit();" style="height:8em;">Sleep</button>
+    <hidden id="c"/>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="sleep();" style="height:8em;">Sleep</button>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="wake();" style="height:8em;">Wake</button>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="up();" style="height:8em;">Volume Up</button>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="down();" style="height:8em;">Volume Down</button>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="mute();" style="height:8em;">Mute</button>
+    <!-- <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="tab();" style="height:8em;">Next Tab</button> -->
   </form>
 </div>
 
@@ -23,5 +30,15 @@
 <script type="text/javascript" src="js/autorolltables.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <!-- <script src="web/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+
+<script type="text/javascript">
+function wake() { window.location = "?c=wake"; }
+function sleep() { window.location = "?c=sleep"; }
+function up() { window.location = "?c=up"; }
+function down() { window.location = "?c=down"; }
+function mute() { window.location = "?c=mute"; }
+function tab() { window.location = "?c=tab"; }
+
+</script>
 
 </body></html>
