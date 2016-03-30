@@ -3,33 +3,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-  <style>
-  .pad { margin-left: 2em; margin-right:2em; margin-bottom:1em;};
-  .padbtn { padding-right: 1em; };
-  .tall { height: 64px; };
+  <link rel="stylesheet" href="defaults.css" type="text/css" media="all" />
+  <style type="text/css">
+    .pad { margin-left: 2em; margin-right:2em; margin-bottom:1em;};
+    .padbtn { padding-right: 1em; };
+    .tall { height: 64px; };
+
+    .quote {
+      margin: auto;
+      width:100%;
+      background-color: #00ff00;
+
+    }
+
+    .bgimage {
+      margin: -10em;
+      position: fixed;
+      opacity: 0.2;
+      filter: alpha(opacity=20); /* For IE8 and earlier */
+    }
+
   </style>
 </head><body>
-<div class="pad">
-  <h1><a href="/">Commands:</a></h1>
+<div class="bgimg">
+  <img src="http://pre00.deviantart.net/4f10/th/pre/i/2011/322/b/7/dark_paisley_for_print_by_kotonori-d4gljpt.png" class="bgimage"/>
 </div>
-<div class="row pad">
-  <form action="index.html" method="POST" id="form1">
-    <hidden id="c"/>
-    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="sleep();" style="height:8em;">Sleep</button>
-    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="wake();" style="height:8em;">Wake</button>
-    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="up();" style="height:8em;">Volume Up</button>
-    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="down();" style="height:8em;">Volume Down</button>
-    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="mute();" style="height:8em;">Mute</button>
-    <!-- <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="tab();" style="height:8em;">Next Tab</button> -->
-  </form>
+<div class="container-fluid">
+  <div class="row">
+    <div class="pad">
+      <h1><a href="/">Commands</a></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row pad">
+      <form action="index.html" method="POST" id="form1">
+        <hidden id="c"/>
+        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="sleep();" style="height:8em;">Sleep</button>
+        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="wake();" style="height:8em;">Wake</button>
+        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="up();" style="height:8em;">Volume Up</button>
+        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="down();" style="height:8em;">Volume Down</button>
+        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="mute();" style="height:8em;">Mute</button>
+        <!-- <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="tab();" style="height:8em;">Next Tab</button> -->
+      </form>
+    </div>
+  </div>
 </div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- <script src="web/jquery.min.js"></script> -->
-<script type="text/javascript" src="js/autorolltables.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<!-- <script src="web/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
 
 <script type="text/javascript">
 function wake() { window.location = "?c=wake"; }
@@ -40,5 +58,11 @@ function mute() { window.location = "?c=mute"; }
 function tab() { window.location = "?c=tab"; }
 
 </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script src="web/jquery.min.js"></script> -->
+<script type="text/javascript" src="js/autorolltables.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- <script src="web/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
 
 </body></html>
