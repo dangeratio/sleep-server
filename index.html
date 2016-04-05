@@ -16,11 +16,20 @@
 
     }
 
+    .glyphicon {
+      font-size: xx-large;
+    }
+    .lrg {
+      font-size: xx-large;
+    }
+
     .bgimage {
       margin: -10em;
       position: fixed;
       opacity: 0.2;
       filter: alpha(opacity=20); /* For IE8 and earlier */
+      z-index: -10;
+
     }
 
   </style>
@@ -38,11 +47,12 @@
     <div class="row pad">
       <form action="index.html" method="POST" id="form1">
         <hidden id="c"/>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="sleep();" style="height:8em;">Sleep</button>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="wake();" style="height:8em;">Wake</button>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="up();" style="height:8em;">Volume Up</button>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="down();" style="height:8em;">Volume Down</button>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="mute();" style="height:8em;">Mute</button>
+        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="sleep();" style="height:8em;"><span class="lrg">Sleep</span></button>
+        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="wake();" style="height:8em;"><span class="lrg">Wake</span></button>
+        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="down();" style="height:8em;"><span class="glyphicon glyphicon-volume-down" aria-hidden="true"></span></button>
+        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="up();" style="height:8em;"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>
+        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="mute();" style="height:8em;"><span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span></button>
+        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="pause();" style="height:8em;"><span class="glyphicon glyphicon-play" aria-hidden="true"></span><span class="lrg">/</span><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button>
         <!-- <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="tab();" style="height:8em;">Next Tab</button> -->
       </form>
     </div>
@@ -56,7 +66,7 @@ function up() { window.location = "?c=up"; }
 function down() { window.location = "?c=down"; }
 function mute() { window.location = "?c=mute"; }
 function tab() { window.location = "?c=tab"; }
-
+function pause() { window.location = "?c=pause"; }
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

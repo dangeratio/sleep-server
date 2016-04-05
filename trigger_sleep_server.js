@@ -39,13 +39,18 @@ var server = http.createServer( function (req, res) {
           console.log("Mute Triggered");
           break;
 
-        case "tab":
-          var z = exec('osascript -e "tell application \"Firefox\" to activate keystroke {tab} using {command down}"');
+          case "tab":
+            var z = exec('osascript -e "tell application \"Firefox\" to activate keystroke {tab} using {command down}"');
+            console.log("Tab Switch Triggered");
+            break;
 
+          case "pause":
+            var z = exec('osascript -e \'tell application "VLC" to play\'');
+            // var z = exec('osascript -e \'if isAppLoaded("VLC") then tell application "VLC" to play\'');
+            // var z = exec('osascript -e \'if isAppLoaded("iTunes") then tell application "iTunes" to playpause\'');
+            console.log("Pause Switch Triggered");
+            break;
 
-
-          console.log("Tab Switch Triggered");
-          break;
 
       default:
         break;
@@ -57,7 +62,7 @@ var server = http.createServer( function (req, res) {
     res.end(index);
 
   } else {
-    console.log("Web Page Triggered");
+    // console.log("Web Page Triggered");
 
     // return page
     var index = fs.readFileSync('index.html');
@@ -65,7 +70,6 @@ var server = http.createServer( function (req, res) {
     res.end(index);
   }
 
-  console.log("Done\n");
 });
 
 server.listen(8080);
