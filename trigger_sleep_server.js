@@ -1,3 +1,26 @@
+'use strict';
+
+var os = require('os');
+var ifaces = os.networkInterfaces();
+var ip = "";
+
+Object.keys(ifaces).forEach(function (ifname) {
+  var alias = 0;
+
+  ifaces[ifname].forEach(function (iface) {
+    if ('IPv4' !== iface.family || iface.internal !== false) {
+      // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+      return;
+    }
+    if (alias >= 1) {
+      ip = iface.address;
+    } else {
+      ip = iface.address;
+    }
+    ++alias;
+  });
+});
+
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
@@ -16,41 +39,40 @@ var server = http.createServer( function (req, res) {
     switch (queryData.c) {
       case "sleep":
         var z = exec('osascript -e \'tell application "Finder" to sleep\'');
-        console.log("Sleep Triggered");
+        console.log("Sleep");
         break;
 
         case "wake":
           var z = exec('caffeinate -u -t 1');
-          console.log("Wake Triggered");
+          console.log("Wake");
           break;
 
         case "up":
           var z = exec('osascript -e \'set currentVolume to output volume of (get volume settings)\' -e \'set volume output volume (currentVolume + 10)\'');
-          console.log("Volume Up Triggered");
+          console.log("Volume Up");
           break;
 
         case "down":
           var z = exec('osascript -e \'set currentVolume to output volume of (get volume settings)\' -e \'set volume output volume (currentVolume - 10)\'');
-          console.log("Volume Down Triggered");
+          console.log("Volume Down");
           break;
 
         case "mute":
           var z = exec('osascript -e "set Volume 0"');
-          console.log("Mute Triggered");
+          console.log("Mute");
           break;
 
-          case "tab":
-            var z = exec('osascript -e "tell application \"Firefox\" to activate keystroke {tab} using {command down}"');
-            console.log("Tab Switch Triggered");
-            break;
+        case "tab":
+          var z = exec('osascript -e "tell application \"Firefox\" to activate keystroke {tab} using {command down}"');
+          console.log("Tab");
+          break;
 
-          case "pause":
-            var z = exec('osascript -e \'tell application "VLC" to play\'');
-            // var z = exec('osascript -e \'if isAppLoaded("VLC") then tell application "VLC" to play\'');
-            // var z = exec('osascript -e \'if isAppLoaded("iTunes") then tell application "iTunes" to playpause\'');
-            console.log("Pause Switch Triggered");
-            break;
-
+        case "pause":
+          var z = exec('osascript -e \'tell application "VLC" to play\'');
+          // var z = exec('osascript -e \'if isAppLoaded("VLC") then tell application "VLC" to play\'');
+          // var z = exec('osascript -e \'if isAppLoaded("iTunes") then tell application "iTunes" to playpause\'');
+          console.log("Pause");
+          break;
 
       default:
         break;
@@ -74,5 +96,4 @@ var server = http.createServer( function (req, res) {
 
 server.listen(8080);
 
-
-console.log("Server Running on Port 8080");
+console.log("Server Running on http://" + ip + ":8080");
