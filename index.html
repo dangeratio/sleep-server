@@ -77,6 +77,10 @@
       background-color: #ccc;
     }
 
+    .filter-input {
+      font-size:x-large;
+    }
+
 
   </style>
 </head><body>
@@ -106,8 +110,7 @@
 
   </div>
   <div class='row pad'>
-    <input id='filter' class='col-lg-10' value="aaa" placeholder='filter...'></input>
-    <button type='button' id='filter-button'>filter</button>
+    <input id='filter' class='col-lg-12 filter-input' placeholder='filter movies'></input>
   </div>
 </div>
 
@@ -130,20 +133,19 @@ function submit_file(file) {
 }
 
 function filter_file_list() {
-  var filter = $('#filter').value();
-  alert(filter);
-  var filter_length = filter.length;
+  var regex = new RegExp($('#filter').val(), "ig");
   $('.file-item').each(function () {
-      if (this.html()[filter_length] != filter) {
-        this.hide();
-      } else {
-        this.show();
-      }
+    if ( regex.test($(this).attr('item')) ) {
+      $(this).show();
+    } else {
+      $(this).hide();
+    }
   });
 }
 
 $('body').on('click', '.file-item', function() { submit_file($(this).html()); });
-$('body').on('click', '#filter-button', function() { filter_file_list(); })
+$('body').on('change', '#filter', function() { filter_file_list(); })
+$('body').on('keyup', '#filter', function() { filter_file_list(); })
 
 </script>
 

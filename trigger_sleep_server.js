@@ -38,7 +38,7 @@ const folder = '/Volumes/Movies/';
 fs.readdir(folder, (err, files) => {
   files.forEach(file => {
     if ( file[0] != '.' ) {
-      add_to_response = add_to_response + "<div class='file-item'>" + file + "</div>";
+      add_to_response = add_to_response + "<div class='file-item' item='" + file + "'>" + file + "</div>";
     }
   });
 })
