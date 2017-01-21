@@ -113,15 +113,11 @@ function trigger_command(obj, query, file) {
       break;
     case "file":
       var exec_path = "/Applications/VLC.app/Contents/MacOS/VLC";
-      file = file.replace(/ /g, "\ ");
-      var file_path = '/Volumes/Movies/' + file;
-      var script = '' + exec_path + ' \"' + file_path + '"';
+      var file_path = '/Volumes/Movies/' + file.replace(/ /g, '\ ');
+      var script = exec_path + ' "' + file_path + '"';
       var z = exec(script);
 
-      console.log(file_path);
       console.log(script);
-
-      process.stdout.write("play file:" + file_path + "|");
       break;
     default:
       break;
@@ -154,7 +150,7 @@ var server = http.createServer(function(req, res) {
 
 });
 
-server.listen(80, ip);
+server.listen(8080, ip);
 
-console.log("Server Running on http://" + ip + ":80");
-console.log("Server Running on http://" + os.hostname() + ":80");
+console.log("Server Running on http://" + ip + ":8080");
+console.log("Server Running on http://" + os.hostname() + ":8080");

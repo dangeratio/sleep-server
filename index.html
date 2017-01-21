@@ -46,7 +46,7 @@
     }
 
     .file-list {
-      height: 400px;
+      height: 600px;
       opacity: 0.65 !important;
       filter: alpha(opacity=65);
       background-color:white;
@@ -92,20 +92,23 @@
   </div>
   <div class="row pad">
 
-        <input type='hidden' id="c" name='c' value=""/>
-        <input type='hidden' id='file' name='file' value=''/>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('sleep');" style="height:8em;"><span class="lrg">Sleep</span></button>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('wake');" style="height:8em;"><span class="lrg">Wake</span></button>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('down');" style="height:8em;"><span class="glyphicon glyphicon-volume-down" aria-hidden="true"></span></button>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('up');" style="height:8em;"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('mute');" style="height:8em;"><span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span></button>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('pause');" style="height:8em;"><span class="glyphicon glyphicon-play" aria-hidden="true"></span><span class="lrg">/</span><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button>
+    <input type='hidden' id="c" name='c' value=""/>
+    <input type='hidden' id='file' name='file' value=''/>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('sleep');" style="height:8em;"><span class="lrg">Sleep</span></button>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('wake');" style="height:8em;"><span class="lrg">Wake</span></button>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('down');" style="height:8em;"><span class="glyphicon glyphicon-volume-down" aria-hidden="true"></span></button>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('up');" style="height:8em;"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('mute');" style="height:8em;"><span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span></button>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('pause');" style="height:8em;"><span class="glyphicon glyphicon-play" aria-hidden="true"></span><span class="lrg">/</span><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button>
 
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('vlckill');" style="height:8em;"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <span class="glyphicon glyphicon-remove"></span></button>
-        <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('vlcfull');" style="height:8em;"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <span class="glyphicon glyphicon-fullscreen"></span></button>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('vlckill');" style="height:8em;"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <span class="glyphicon glyphicon-remove"></span></button>
+    <button type="button" class="tall btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6 padbtn" onclick="submit_form('vlcfull');" style="height:8em;"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <span class="glyphicon glyphicon-fullscreen"></span></button>
 
   </div>
-
+  <div class='row pad'>
+    <input id='filter' class='col-lg-10' value="aaa" placeholder='filter...'></input>
+    <button type='button' id='filter-button'>filter</button>
+  </div>
 </div>
 
 </form>
@@ -126,7 +129,21 @@ function submit_file(file) {
   var t = setTimeout("document.forms['form1'].submit();", 1);
 }
 
+function filter_file_list() {
+  var filter = $('#filter').value();
+  alert(filter);
+  var filter_length = filter.length;
+  $('.file-item').each(function () {
+      if (this.html()[filter_length] != filter) {
+        this.hide();
+      } else {
+        this.show();
+      }
+  });
+}
+
 $('body').on('click', '.file-item', function() { submit_file($(this).html()); });
+$('body').on('click', '#filter-button', function() { filter_file_list(); })
 
 </script>
 

@@ -6,4 +6,4 @@ SSID="$( /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current
 
 clear
 echo "SSID:$SSID"
-sudo node $SCRIPT_PATH
+node $SCRIPT_PATH
